@@ -29,5 +29,4 @@ public class StudyApplication {
 		dataSource.setPassword("13112001UJL");
 		return dataSource;
 	}
-
 }

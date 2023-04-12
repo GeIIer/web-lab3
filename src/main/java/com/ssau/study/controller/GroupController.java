@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/groups")
+@CrossOrigin(origins = "http://localhost:4200")
 @AllArgsConstructor
 public class GroupController {
 
