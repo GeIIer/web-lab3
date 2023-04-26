@@ -1,6 +1,7 @@
 package com.ssau.study.controller;
 
 import com.ssau.study.dto.GroupPojo;
+import com.ssau.study.dto.GroupWithoutStudentsPojo;
 import com.ssau.study.service.GroupService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -16,13 +17,8 @@ public class GroupController {
     private final GroupService groupService;
 
     @GetMapping("/all")
-    public List<GroupPojo> findAll() {
+    public List<GroupWithoutStudentsPojo> findAll() {
         return groupService.findAll();
-    }
-
-    @GetMapping("/all/{name}")
-    public GroupPojo findByName(@PathVariable String name) {
-        return groupService.findByName(name);
     }
 
     @GetMapping("/{id}")

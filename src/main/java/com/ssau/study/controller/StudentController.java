@@ -25,11 +25,6 @@ public class StudentController {
         return studentService.findAll();
     }
 
-    @GetMapping("/all/{name}")
-    public List<StudentPojo> findAllByName(@PathVariable String name) {
-        return studentService.findAllByName(name);
-    }
-
     @PostMapping()
     public StudentPojo createStudent(@RequestBody StudentPojo studentPojo) {
         return studentService.createStudent(studentPojo);

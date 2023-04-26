@@ -15,7 +15,9 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String firstname;
+
+    private String lastname;
 
     @Temporal(value = TemporalType.DATE)
     private Date birthdate;

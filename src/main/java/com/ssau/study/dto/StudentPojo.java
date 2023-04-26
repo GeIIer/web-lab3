@@ -11,9 +11,10 @@ import java.util.Date;
 @Builder
 public class StudentPojo {
     private Long id;
-    private String name;
+    private String firstname;
+    private String lastname;
     private Date birthdate;
     private int number;
-    private Long group;
+    private Long groupId;
 
 }

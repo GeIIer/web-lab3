@@ -2,6 +2,7 @@ package com.ssau.study.service;
 
 import com.ssau.study.dto.StudentPojo;
 import com.ssau.study.entity.Student;
+import com.ssau.study.exceptions.StudentNotFoundException;
 import com.ssau.study.factoryDto.StudentFactory;
 import com.ssau.study.repository.StudentRepository;
 import lombok.AllArgsConstructor;
@@ -36,13 +37,6 @@ public class StudentService {
                 .toList();
     }
 
-    public List<StudentPojo> findAllByName(String name) {
-        return studentRepository.findAllByName(name)
-                .stream()
-                .map(studentFactory::toPojo)
-                .toList();
-    }
-
     public StudentPojo update(StudentPojo dto) {
         return studentFactory.toPojo(studentRepository.save(studentFactory.toEntity(dto)));
     }
@@ -51,9 +45,9 @@ public class StudentService {
         studentRepository.deleteById(id);
     }
 
-    public StudentPojo findById(long id) {
+    public StudentPojo findById(Long id) {
         Optional<Student> studentOptional = studentRepository.findById(id);
         return studentOptional.map(studentFactory::toPojo).orElseThrow(
-                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Студента нет"));
+                () -> new StudentNotFoundException(id.toString()));
     }
 }

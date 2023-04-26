@@ -15,21 +15,23 @@ public class StudentFactory {
     public StudentPojo toPojo(Student entity) {
         return StudentPojo.builder()
                 .id(entity.getId())
-                .name(entity.getName())
+                .firstname(entity.getFirstname())
+                .lastname(entity.getLastname())
                 .birthdate(entity.getBirthdate())
                 .number(entity.getNumber())
-                .group(entity.getGroup() != null ? entity.getGroup().getId() : null)
+                .groupId(entity.getGroup() != null ? entity.getGroup().getId() : null)
                 .build();
     }
 
     public Student toEntity(StudentPojo dto) {
         Student student = new Student();
         student.setId(dto.getId());
-        student.setName(dto.getName());
+        student.setFirstname(dto.getFirstname());
+        student.setLastname(dto.getLastname());
         student.setBirthdate(dto.getBirthdate());
         student.setNumber(dto.getNumber());
-        if (dto.getGroup() != null) {
-            student.setGroup(groupRepository.findById(dto.getGroup()).orElse(null));
+        if (dto.getGroupId() != null) {
+            student.setGroup(groupRepository.findById(dto.getGroupId()).orElse(null));
         }
         return student;
     }

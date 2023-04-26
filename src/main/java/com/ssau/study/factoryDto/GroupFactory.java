@@ -1,6 +1,7 @@
 package com.ssau.study.factoryDto;
 
 import com.ssau.study.dto.GroupPojo;
+import com.ssau.study.dto.GroupWithoutStudentsPojo;
 import com.ssau.study.entity.Group;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,13 @@ public class GroupFactory {
                         .stream()
                         .map(studentFactory::toPojo)
                         .toList() : null)
+                .build();
+    }
+
+    public GroupWithoutStudentsPojo toWithoutStudentsPojo(Group entity) {
+        return GroupWithoutStudentsPojo.builder()
+                .id(entity.getId())
+                .name(entity.getName())
                 .build();
     }
 
